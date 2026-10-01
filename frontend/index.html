@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waiter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <h1>Тухватуллина Самира</h1>
+    <p>Смена · 10:00–22:00</p>
+    <button aria-label="Меню">⋯</button>
+  </header>
+
+  <main>
+    <h2>Зал </h2>
+
+    <section class="tables">
+      <button class="table table--free">
+        <strong>1</strong>
+        <span>4 места</span>
+      </button>
+
+      <button class="table table--busy">
+        <strong>2</strong>
+        <span>2 гостя · 45 мин</span>
+        <span>3 240 ₽</span>
+      </button>
+
+      <button class="table table--booked">
+        <strong>3</strong>
+        <span>Бронь · 19:30</span>
+      </button>
+
+      <button class="table table--free">
+        <strong>4</strong>
+        <span>6 мест</span>
+      </button>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="nav-btn is-active">Зал</button>
+    <button class="nav-btn">Заказы</button>
+    <button class="nav-btn">Смена</button>
+    <button class="nav-btn">Профиль</button>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+/* ─── Переменные (настройки всего дизайна в одном месте) ─── */
+:root {
+  --bg:        #111315;
+  --surface:   #1a1d21;
+  --surface-2: #23272c;
+  --border:    #2c3137;
+  --text:      #f1f3f5;
+  --text-dim:  #8b939c;
+  --accent:    #4c8dff;
+  --success:   #2fbf71;
+  --warning:   #f0a500;
+
+  --radius: 14px;
+  --font: -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ─── Сброс отступов браузера ─── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;   /* ширина включает padding — так проще считать */
+}
+
+body {
+  height: 100vh;
+  display: flex;              /* включаем flex-раскладку */
+  flex-direction: column;     /* элементы идут сверху вниз */
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  -webkit-tap-highlight-color: transparent; /* убираем синюю вспышку при тапе */
+}
+
+/* ─── Шапка ─── */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar h1 {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.topbar p {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.topbar button {
+  font-size: 22px;
+  color: var(--text-dim);
+  padding: 8px 12px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* ─── Основная зона ─── */
+main {
+  flex: 1;                 /* занимает всё свободное место */
+  overflow-y: auto;        /* скроллится только она */
+  padding: 16px 20px;
+}
+
+main h2 {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
+
+/* ─── Сетка столов ─── */
+.tables {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+/* ─── Карточка стола ─── */
+.table {
+  position: relative;       /* чтобы работала полоска слева */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 110px;
+  padding: 14px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font);
+  text-align: left;
+  cursor: pointer;
+  transition: transform .1s;
+}
+
+.table:active {
+  transform: scale(0.97);   /* лёгкое нажатие — приятная отдача */
+}
+
+/* Цветная полоска слева — статус стола */
+.table::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+}
+
+.table--free::before   { background: var(--success); }
+.table--busy::before   { background: var(--warning); }
+.table--booked::before { background: var(--accent); }
+
+.table--busy { background: var(--surface-2); }
+
+.table strong {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.table span {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.table span:last-child {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ─── Нижняя навигация ─── */
+.bottom-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  padding: 8px 0;
+}
+
+.nav-btn {
+  padding: 10px 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dim);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-btn.is-active {
+  color: var(--accent);
+}
